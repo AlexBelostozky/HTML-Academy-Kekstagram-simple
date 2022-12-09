@@ -113,19 +113,20 @@ function initUpload () {
     return 100 * imgPreviewElement.style.transform.replace(/[^0-9.,]+/g, '');
   }
 
-  // Функция для уменьшения масштаба изображения
-  function reduceImage () {
+  // Функция для изменения масштаба изображения
+  function changeScale(scaleAction) {
     const currentImageScale = getCurrentImageScale();
-    if (currentImageScale > MIN_SCALE) {
-      imgPreviewElement.style.transform = `scale(${(currentImageScale - SCALE_STEP) / 100})`;
-    }
-  }
-
-  // Функция для увеличения масштаба изображения
-  function enlargeImage () {
-    const currentImageScale = getCurrentImageScale();
-    if (currentImageScale < MAX_SCALE) {
-      imgPreviewElement.style.transform = `scale(${(currentImageScale + SCALE_STEP) / 100})`;
+    switch (scaleAction) {
+      case 'reduce':
+        if (currentImageScale > MIN_SCALE) {
+          imgPreviewElement.style.transform = `scale(${(currentImageScale - SCALE_STEP) / 100})`;
+        }
+        break;
+      case 'enlarge':
+        if (currentImageScale < MAX_SCALE) {
+          imgPreviewElement.style.transform = `scale(${(currentImageScale + SCALE_STEP) / 100})`;
+        }
+        break;
     }
   }
 
@@ -135,36 +136,40 @@ function initUpload () {
     scaleValueElement.value = `${currentImageScale}%`;
   }
 
-  // Функция-обработчик изменения масштаба изображения
+  // Функция-обработчик нажатия кнопок изменения масштаба изображения
   function onScaleControlClick (evt) {
-    if (evt.target.matches('.scale__control--smaller')) {
-      reduceImage();
-    }
-    if (evt.target.matches('.scale__control--bigger')) {
-      enlargeImage();
+    switch (evt.target.dataset.scaleControl) {
+      case 'smaller':
+        changeScale('reduce');
+        break;
+      case 'bigger':
+        changeScale('enlarge');
+        break;
     }
     updateImageScaleValue();
   }
 
   // Функция-обобработчик изменения эффекта изображения
   function onEffectsListClick (evt) {
-    if (evt.target.matches('#effect-none')) {
-      imgPreviewElement.className = 'effects__preview--none';
-    }
-    if (evt.target.matches('#effect-chrome')) {
-      imgPreviewElement.className = 'effects__preview--chrome';
-    }
-    if (evt.target.matches('#effect-sepia')) {
-      imgPreviewElement.className = 'effects__preview--sepia';
-    }
-    if (evt.target.matches('#effect-marvin')) {
-      imgPreviewElement.className = 'effects__preview--marvin';
-    }
-    if (evt.target.matches('#effect-phobos')) {
-      imgPreviewElement.className = 'effects__preview--phobos';
-    }
-    if (evt.target.matches('#effect-heat')) {
-      imgPreviewElement.className = 'effects__preview--heat';
+    switch (evt.target.id) {
+      case 'effect-none':
+        imgPreviewElement.className = 'effects__preview--none';
+        break;
+      case 'effect-chrome':
+        imgPreviewElement.className = 'effects__preview--chrome';
+        break;
+      case 'effect-sepia':
+        imgPreviewElement.className = 'effects__preview--sepia';
+        break;
+      case 'effect-marvin':
+        imgPreviewElement.className = 'effects__preview--marvin';
+        break;
+      case 'effect-phobos':
+        imgPreviewElement.className = 'effects__preview--phobos';
+        break;
+      case 'effect-heat':
+        imgPreviewElement.className = 'effects__preview--heat';
+        break;
     }
   }
 

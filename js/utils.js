@@ -1,10 +1,10 @@
+import {bodyElement} from './constants.js';
+
 // Переменная для хранения состояния окна сообщения
 let isMessageShown = false;
 
 //=================================
 // Вывод сообщения в отдельном окне
-
-const bodyElement = document.body;
 
 // Функция-обработчик нажатия Escape при открытом сообщении
 function onMessageEscKeydown (evt) {

@@ -2,22 +2,22 @@ import {isEscKeyPressed} from './utils.js';
 import {isMessageShown} from './utils.js';
 import {showMessage} from './utils.js';
 import {sendData} from './api.js';
+import {MIN_SCALE} from './constants.js';
+import {DEFAULT_SCALE} from './constants.js';
+import {MAX_SCALE} from './constants.js';
+import {SCALE_STEP} from './constants.js';
+import {uploadFieldElement} from './constants.js';
+import {photoUploadFormElement} from './constants.js';
+import {formSubmitButtonElement} from './constants.js';
+import {commentFieldElement} from './constants.js';
+import {photoEditorFormElement} from './constants.js';
+import {bodyElement} from './constants.js';
+import {photoEditorFormCloseButtonElement} from './constants.js';
+import {scaleControlFieldElement} from './constants.js';
+import {scaleValueElement} from './constants.js';
+import {imgPreviewElement} from './constants.js';
+import {effectsListElement} from './constants.js';
 
-const MIN_SCALE = 25;
-const DEFAULT_SCALE = 100;
-const MAX_SCALE = 100;
-const SCALE_STEP = 25;
-const uploadFieldElement = document.querySelector('#upload-file');
-const photoUploadFormElement = document.querySelector('.img-upload__form');
-const formSubmitButtonElement = document.querySelector('#upload-submit');
-const commentFieldElement = photoUploadFormElement.querySelector('.text__description');
-const photoEditorFormElement = document.querySelector('.img-upload__overlay');
-const bodyElement = document.body;
-const photoEditorFormCloseButtonElement = document.querySelector('#upload-cancel');
-const scaleControlFieldElement = document.querySelector('.img-upload__scale');
-const scaleValueElement = document.querySelector('.scale__control--value');
-const imgPreviewElement = document.querySelector('.img-upload__preview img');
-const effectsListElement = document.querySelector('.effects__list');
 
 function initUpload () {
   // Функция-обработчик нажатия Escape при открытой форме

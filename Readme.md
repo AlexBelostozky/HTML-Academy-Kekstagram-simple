@@ -7,6 +7,8 @@
 
 Keksogram is a photo viewing service. The user can upload their own photos and view photos from other users.
 
+<img  width="100%" alt="Project preview" src="./repository files/preview.jpg">
+
 ---
 
 ## Statement of work
@@ -26,7 +28,7 @@ And my task was to implement the following functions using **JavaScript**:
 I successfully completed the project on time and received a certificate of successful workshop completion.
 
 <a href="https://assets.htmlacademy.ru/certificates/intensive/337/2026639.pdf">
-  <img  width="307" height="432" style="display:block" alt="Certificate" src="./repository files/certificate.png">
+  <img  width="307" height="432" alt="Certificate" src="./repository files/certificate.png">
 </a>
 
 ---

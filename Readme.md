@@ -1,51 +1,44 @@
-# Личный проект «Кекстаграм (простой)»
+# Learning project «Keksogram (simple)»
 
-* Студент: [Александр Белостоцкий](https://up.htmlacademy.ru/javascript/27/user/2026639).
-* Наставник: [Роман Желтов](https://htmlacademy.ru/profile/id1145037).
-
----
-
-_Не удаляйте и не изменяйте самовольно файлы и папки:_
-_`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `package-lock.json`, `package.json`., `.github`_
+* Student: [Alexander Belostozky](https://up.htmlacademy.ru/javascript/27/user/2026639)
+* Mentor: [Roman Zheltov](https://htmlacademy.ru/profile/id1145037)
 
 ---
 
-[Как работать с Git на проекте](Contributing.md) | [Как работать над проектом](Workflow.md)
+Keksogram is a photo viewing service. The user can upload their own photos and view photos from other users.
 
-### Памятка
+---
 
-#### 1. Зарегистрируйтесь на Гитхабе
+## Statement of work
+HTML layout and CSS were originally given.
 
-Если у вас ещё нет аккаунта на [github.com](https://github.com/join), скорее зарегистрируйтесь.
+And my task was to implement the following functions using **JavaScript**:
+- upload new photo on the server using **AJAX**
+- change the scale of the photo
+- applying an effect to a photo
+- **validate the form** before sending it to the server (check the existence and length of the comment) (currently implemented using **HTML5**)
+- fetching photos and its data using **AJAX** and rendering new **DOM**-nodes with photos thumbnails
 
-#### 2. Создайте форк
+---
 
-Откройте репозиторий и нажмите кнопку «Fork» в правом верхнем углу. Репозиторий из Академии будет скопирован в ваш аккаунт.
+## Results
 
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275222-1d624452-0050-11e8-8aca-06d2832724ce.png">
+I successfully completed the project on time and received a certificate of successful workshop completion.
 
-Получится вот так:
+<a href="https://assets.htmlacademy.ru/certificates/intensive/337/2026639.pdf">
+  <img  width="307" height="432" style="display:block" alt="Certificate" src="./repository files/certificate.png">
+</a>
 
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275223-1d7cf9fa-0050-11e8-829b-98ac3c9a4f8b.png">
+---
 
-#### 3. Клонируйте репозиторий на свой компьютер
-
-Будьте внимательны: нужно клонировать свой репозиторий (форк), а не репозиторий Академии. Также обратите внимание, что клонировать репозиторий нужно через SSH, а не через HTTPS. Нажмите зелёную кнопку в правой части экрана, чтобы скопировать SSH-адрес вашего репозитория:
-
-<img width="769" alt="" src="https://user-images.githubusercontent.com/10909/35275224-1d97a7dc-0050-11e8-89f9-41c9a7b2ae9c.png">
-
-Клонировать репозиторий можно так:
-
-```
-git clone SSH-адрес_вашего_форка
-```
-
-Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
-
-#### 4. Начинайте обучение!
+## Improvement plans
+Further I want to add the following improvements to the project:
+- [ ] show uploading photo before sending form
+- [ ] possibility to change the effect strength
+- [ ] possibility to open the large photo by clicking photo thumbnail
 
 ---
 
 <a href="https://htmlacademy.ru/intensive/javascript"><img align="left" width="50" height="50" alt="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/javascript/logo-for-github-2.png"></a>
 
-Репозиторий создан для обучения на интенсивном онлайн‑курсе «[JavaScript. Профессиональная разработка веб-интерфейсов](https://htmlacademy.ru/intensive/javascript)» от [HTML Academy](https://htmlacademy.ru).
+Repository was created for intensive online-course learning «[JavaScript. Professional Development of Web Interfaces](https://htmlacademy.ru/intensive/javascript)» from [HTML Academy](https://htmlacademy.ru).

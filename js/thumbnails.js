@@ -1,8 +1,6 @@
-// Переменная, содержащая в себе целевой тег для размещения фотографий
-const picturesContainerElement = document.querySelector('.pictures');
+import {picturesContainerElement} from './constants.js'; // Переменная, содержащая элемент для размещения фотографий
+import {picturesTemplateElement} from './constants.js'; // Переменная, содержащая шаблон для фотогоафий
 
-// Переменная, содержащая в себе шаблон для фотогоафий
-const picturesTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
 // Функция для наполнения заготовки данными
 function renderTumbnails (picturesData) {

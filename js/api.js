@@ -1,16 +1,13 @@
 import {showMessage} from './utils.js';
-
-// Источник данных для загрузки
-const DATA_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
-// Адрес для отправки данных
-const DESTINATION_URL = 'https://27.javascript.pages.academy/kekstagram-simple';
+import {DATA_URL} from './constants.js';
+import {DESTINATION_URL} from './constants.js';
 
 // Функция для получения фотографий пользователей с сервера
 function getData (onSuccess) {
   fetch(DATA_URL)
     .then((response) => response.json())
-    .catch((err) => showMessage('error', err, 'Невозможно загрузить фотографии других пользователей', 'Закрыть'))
-    .then((usersPostsData) => onSuccess(usersPostsData));
+    .then((usersPostsData) => onSuccess(usersPostsData))
+    .catch((err) => showMessage('error', err, 'Невозможно загрузить фотографии других пользователей', 'Закрыть'));
 }
 
 // Функция для отправки фотографии

@@ -2,22 +2,22 @@ import {isEscKeyPressed} from './utils.js';
 import {isMessageShown} from './utils.js';
 import {showMessage} from './utils.js';
 import {sendData} from './api.js';
+import {MIN_SCALE} from './constants.js';
+import {DEFAULT_SCALE} from './constants.js';
+import {MAX_SCALE} from './constants.js';
+import {SCALE_STEP} from './constants.js';
+import {uploadFieldElement} from './constants.js';
+import {photoUploadFormElement} from './constants.js';
+import {formSubmitButtonElement} from './constants.js';
+import {commentFieldElement} from './constants.js';
+import {photoEditorFormElement} from './constants.js';
+import {bodyElement} from './constants.js';
+import {photoEditorFormCloseButtonElement} from './constants.js';
+import {scaleControlFieldElement} from './constants.js';
+import {scaleValueElement} from './constants.js';
+import {imgPreviewElement} from './constants.js';
+import {effectsListElement} from './constants.js';
 
-const MIN_SCALE = 25;
-const DEFAULT_SCALE = 100;
-const MAX_SCALE = 100;
-const SCALE_STEP = 25;
-const uploadFieldElement = document.querySelector('#upload-file');
-const photoUploadFormElement = document.querySelector('.img-upload__form');
-const formSubmitButtonElement = document.querySelector('#upload-submit');
-const commentFieldElement = photoUploadFormElement.querySelector('.text__description');
-const photoEditorFormElement = document.querySelector('.img-upload__overlay');
-const bodyElement = document.body;
-const photoEditorFormCloseButtonElement = document.querySelector('#upload-cancel');
-const scaleControlFieldElement = document.querySelector('.img-upload__scale');
-const scaleValueElement = document.querySelector('.scale__control--value');
-const imgPreviewElement = document.querySelector('.img-upload__preview img');
-const effectsListElement = document.querySelector('.effects__list');
 
 function initUpload () {
   // Функция-обработчик нажатия Escape при открытой форме
@@ -113,19 +113,20 @@ function initUpload () {
     return 100 * imgPreviewElement.style.transform.replace(/[^0-9.,]+/g, '');
   }
 
-  // Функция для уменьшения масштаба изображения
-  function reduceImage () {
+  // Функция для изменения масштаба изображения
+  function changeScale(scaleAction) {
     const currentImageScale = getCurrentImageScale();
-    if (currentImageScale > MIN_SCALE) {
-      imgPreviewElement.style.transform = `scale(${(currentImageScale - SCALE_STEP) / 100})`;
-    }
-  }
-
-  // Функция для увеличения масштаба изображения
-  function enlargeImage () {
-    const currentImageScale = getCurrentImageScale();
-    if (currentImageScale < MAX_SCALE) {
-      imgPreviewElement.style.transform = `scale(${(currentImageScale + SCALE_STEP) / 100})`;
+    switch (scaleAction) {
+      case 'reduce':
+        if (currentImageScale > MIN_SCALE) {
+          imgPreviewElement.style.transform = `scale(${(currentImageScale - SCALE_STEP) / 100})`;
+        }
+        break;
+      case 'enlarge':
+        if (currentImageScale < MAX_SCALE) {
+          imgPreviewElement.style.transform = `scale(${(currentImageScale + SCALE_STEP) / 100})`;
+        }
+        break;
     }
   }
 
@@ -135,36 +136,40 @@ function initUpload () {
     scaleValueElement.value = `${currentImageScale}%`;
   }
 
-  // Функция-обработчик изменения масштаба изображения
+  // Функция-обработчик нажатия кнопок изменения масштаба изображения
   function onScaleControlClick (evt) {
-    if (evt.target.matches('.scale__control--smaller')) {
-      reduceImage();
-    }
-    if (evt.target.matches('.scale__control--bigger')) {
-      enlargeImage();
+    switch (evt.target.dataset.scaleControl) {
+      case 'smaller':
+        changeScale('reduce');
+        break;
+      case 'bigger':
+        changeScale('enlarge');
+        break;
     }
     updateImageScaleValue();
   }
 
   // Функция-обобработчик изменения эффекта изображения
   function onEffectsListClick (evt) {
-    if (evt.target.matches('#effect-none')) {
-      imgPreviewElement.className = 'effects__preview--none';
-    }
-    if (evt.target.matches('#effect-chrome')) {
-      imgPreviewElement.className = 'effects__preview--chrome';
-    }
-    if (evt.target.matches('#effect-sepia')) {
-      imgPreviewElement.className = 'effects__preview--sepia';
-    }
-    if (evt.target.matches('#effect-marvin')) {
-      imgPreviewElement.className = 'effects__preview--marvin';
-    }
-    if (evt.target.matches('#effect-phobos')) {
-      imgPreviewElement.className = 'effects__preview--phobos';
-    }
-    if (evt.target.matches('#effect-heat')) {
-      imgPreviewElement.className = 'effects__preview--heat';
+    switch (evt.target.id) {
+      case 'effect-none':
+        imgPreviewElement.className = 'effects__preview--none';
+        break;
+      case 'effect-chrome':
+        imgPreviewElement.className = 'effects__preview--chrome';
+        break;
+      case 'effect-sepia':
+        imgPreviewElement.className = 'effects__preview--sepia';
+        break;
+      case 'effect-marvin':
+        imgPreviewElement.className = 'effects__preview--marvin';
+        break;
+      case 'effect-phobos':
+        imgPreviewElement.className = 'effects__preview--phobos';
+        break;
+      case 'effect-heat':
+        imgPreviewElement.className = 'effects__preview--heat';
+        break;
     }
   }
 

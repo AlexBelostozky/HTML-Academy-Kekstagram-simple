@@ -53,20 +53,22 @@ function showMessage (messageType, messageInfo, messageText, messageButtonText) 
   const newMessage = messageTemplateElement.cloneNode(true);
 
   // Проверяем наличие модифицирующих аргументов
-  if (typeof messageInfo !== 'undefined' || typeof messageText !== 'undefined') {
+  if (!!messageInfo || !!messageText) {
     newMessage.querySelector('.message__title').textContent = '';
     // Редактируем текст сообщения
-    if (typeof messageInfo !== 'undefined') {
+    //eslint-disable-next-line no-extra-boolean-cast
+    if (!!messageInfo) {
       newMessage.querySelector('.message__title').textContent += `${messageInfo}. `;
     }
-
-    if (typeof messageText !== 'undefined') {
+    //eslint-disable-next-line no-extra-boolean-cast
+    if (!!messageText) {
       newMessage.querySelector('.message__title').textContent += `${messageText}`;
     }
   }
 
   // Проверяем наличие аргумента, модифицирующего текст кнопки
-  if (typeof messageButtonText !== 'undefined') {
+  //eslint-disable-next-line no-extra-boolean-cast
+  if (!!messageButtonText) {
     newMessage.querySelector('.message__button').textContent = messageButtonText;
   }
 
